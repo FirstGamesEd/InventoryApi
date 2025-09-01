@@ -1,0 +1,50 @@
+[
+  {
+    "Posicion": 1,
+    "Operacion": {
+      "Sku": 1,
+      "Delta": 10,
+      "Tipo": "Ajuste",
+      "OperacionID": "c1a1f1f2-aaaa-bbbb-cccc-221111331113",
+      "TiendaID": "Tienda-001",
+      "Version": 2,
+      "FechaMovimiento": "2025-09-01T01:41:37.8676284-06:00"
+    }
+  },
+  {
+    "Posicion": 2,
+    "Operacion": {
+      "Sku": 1,
+      "Delta": -5,
+      "Tipo": "Ajuste",
+      "OperacionID": "c1a1f1f2-aaaa-bbbb-cccc-221111331115",
+      "TiendaID": "Tienda-001",
+      "Version": 3,
+      "FechaMovimiento": "2025-09-01T01:43:49.8564455-06:00"
+    }
+  },
+  {
+    "Posicion": 3,
+    "Operacion": {
+      "Sku": 1,
+      "Delta": 5,
+      "Tipo": "Reserva",
+      "OperacionID": "c1a1f1f2-aaaa-bbbb-cccc-111111111111",
+      "TiendaID": "Tienda-001",
+      "Version": 4,
+      "FechaMovimiento": "2025-09-01T01:47:43.9085864-06:00"
+    }
+  },
+  {
+    "Posicion": 4,
+    "Operacion": {
+      "Sku": 1,
+      "Delta": 10,
+      "Tipo": "Ajuste",
+      "OperacionID": "c1a1f1f2-aaaa-bbbb-cccc-221111331114",
+      "TiendaID": "Tienda-001",
+      "Version": 5,
+      "FechaMovimiento": "2025-09-01T10:46:55.3045436-06:00"
+    }
+  }
+]
