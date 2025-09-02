@@ -1,0 +1,9 @@
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\InventoryApi.ML.exe
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\appsettings.Development.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\appsettings.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\data\InventarioBD.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\data\InventarioLog.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\InventoryApi.ML.dll
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\InventoryApi.ML.deps.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\InventoryApi.ML.runtimeconfig.json
+C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml\bin\Release\net8.0\publish\InventoryApi.ML.pdb

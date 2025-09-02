@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InventoryApi.ML.Tests
-build_property.ProjectDir = C:\Users\xoef602\Documents\InventarioApi-ML\inventoryapi.ml.tests\
+build_property.ProjectDir = C:\Users\edubo\Documents\CodeChallenges\InventarioApi-ML\InventoryApi.ML.Tests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

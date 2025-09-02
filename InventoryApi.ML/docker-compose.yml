@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  inventory-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5194:80"  # Asegúrate de mapear el puerto correctamente
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - ./data.json:/app/InventarioBD.json
+      - ./log.txt:/app/InventarioLog.txt
