@@ -278,4 +278,56 @@ public class InventoryApiTests : IClassFixture<WebApplicationFactory<Program>>
         Assert.Equal(1, lRespuesta.SiguientePosicion);
         Assert.Single(lRespuesta.Entrada);
     }
+
+    [Fact]
+    public async Task Get_Recomendar_Reabasto_Ok()
+    {
+        var lMockInventario = new Mock<IAgenteIA>();
+        lMockInventario.Setup(x => x.AnalizarAsync(It.IsAny<IEnumerable<OperacionSyncDto>>(), It.IsAny<Dictionary<int, int>>()))
+                      .ReturnsAsync(new List<RecomendacionDto> 
+                      {
+                        new RecomendacionDto
+                        {
+                            Sku = 3,
+                            StockActual = 12,
+                            Umbral = 15,
+                            Recomendacion = "⚠️ Reabastecer 3. Stock actual: 12, operaciones recientes: 0."
+                        }
+                      });
+
+        var lCliente = mPrograma.WithWebHostBuilder(lConstructor =>
+        {
+            lConstructor.ConfigureServices(lServicio =>
+            {
+                lServicio.AddSingleton(lMockInventario.Object);
+            });
+        }).CreateClient();
+        
+
+        var lOperaciones = new List<OperacionSyncDto>
+        {
+            new OperacionSyncDto
+            {
+                Sku = 3,
+                Delta = 2,
+                Tipo = "Reserva",
+                OperacionID = Guid.NewGuid(),
+                TiendaID = "Tienda-003",
+                Version = 2
+            }
+        };
+
+        var inventario = new Dictionary<int, int>
+        {
+            { 1, 5 } 
+        };
+
+        var lPeticion = await lCliente.GetAsync("/AgenteIA/Recomendacion");
+        lPeticion.EnsureSuccessStatusCode();
+
+        var lRespuesta = await lPeticion.Content.ReadFromJsonAsync<List<RecomendacionDto>>();
+
+        Assert.Single(lRespuesta);
+    }
+
 }

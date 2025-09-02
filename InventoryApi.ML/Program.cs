@@ -18,7 +18,7 @@ public partial class Program
 
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.WebHost.UseUrls("http://0.0.0.0:80");
+    //builder.WebHost.UseUrls("http://0.0.0.0:80");
 
     var lJsonArchivoBD = builder.Configuration.GetSection("InventarioBD:RutaArchivo").Value;
     var lJsonArchivoLog = builder.Configuration.GetSection("InventarioLog:RutaArchivo").Value;
@@ -26,6 +26,7 @@ public partial class Program
     builder.Services.AddSingleton<IInventarioRepo>(new InventarioRepo(lJsonArchivoBD));
     builder.Services.AddSingleton<ICambios>(new Cambios(lJsonArchivoLog));
     builder.Services.AddSingleton<IInventario, Inventario>();
+    builder.Services.AddSingleton<IAgenteIA>(new AgenteIA());
 
     builder.Services.AddHostedService<TrabajoSync>();
 
@@ -81,6 +82,24 @@ public partial class Program
         return Results.Conflict(new { Descripcion = pError.Message, Articulo = pError.ArticuloEX });
       }
       
+    });
+
+    app.MapGet("/AgenteIA/Recomendacion", async (IAgenteIA ia, ICambios cambios, IInventario x) =>
+    {
+        var lInventarioActual = new Dictionary<int, int>();
+        
+        var log = await cambios.LeerAsync(0);
+        
+        var lArticulos = await x.ConsultarTodoAsync();
+
+        foreach(var lArticulo in lArticulos)
+        {
+          lInventarioActual.Add(lArticulo.Sku, lArticulo.Cantidad);
+        }
+
+        var lRecomendaciones = await ia.AnalizarAsync(log.Entrada.Select(e => e.Operacion), lInventarioActual);
+
+        return Results.Ok(lRecomendaciones);
     });
 
     app.MapPost("/sync/Enviar", async (BatchSyncDto pProceso, IInventario x) =>
